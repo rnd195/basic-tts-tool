@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Read this to me</title>
+</head>
+<style>
+    :root {
+        --dark: #1f1f1f;
+        --light: #dadada;
+    }
+    body {
+        background-color: var(--dark)
+    }
+    .content {
+        max-width: 500px;
+        flex: auto;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--light);
+        padding: 5px 10px 5px 10px;
+    }
+    .custom-button {
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px 6px 10px 0px;
+    }
+    .text-field {
+        max-width: 500px;
+        width: 500px;
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .language-select {
+        width: 524px;
+        height: 130px;
+        color: var(--light);
+        background-color: var(--dark);
+        border-radius: 10px;
+        margin-top: 6px;
+    }
+    #button-main {
+        color: var(--light);
+        background-color: #2654d3;
+    }
+    #button-main:hover {
+        background-color: #1e43a8;
+    }
+    #button-main:active {
+        background-color: #152e72;
+    }
+    #button-misc {
+        color: var(--dark);
+        background-color: var(--light);
+    }
+    #button-misc:hover {
+        background-color: #adadad;
+    }
+    #button-misc:active {
+        background-color: #7e7e7e;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h1>
+            Read this to me
+        </h1>
+        <p>Sample text here</p>
+        <div class="buttons-container">
+            <button type="button" class="custom-button" id="button-main" onclick="speakText()">Speak</button>
+            <button type="button" class="custom-button" id="button-misc" onclick="stopSpeech()">Stop</button> 
+            <button type="button" class="custom-button" id="button-misc" onclick="deleteText()">Delete</button> 
+        </div>
+        <div>
+            <textarea class="text-field" rows="16" placeholder="Paste text here!"></textarea>
+            <select class="language-select" multiple=""></select>
+        </div>
+    </div>
+
+    <script>
+        // Following from [1]
+        const synthesis = window.speechSynthesis;
+        const speakerSelect = document.querySelector("select");
+        const inputField = document.querySelector("textarea");
+
+        // Set up custom language selection
+        function myLanguages(item) {
+            return item.lang == "cs-CZ" || item.lang == "en-US";
+        }
+
+        let speakersArray;
+        let voiceNames;
+
+        function loadSpeakers() {
+            // Load available speech modules
+            speakersArray = synthesis.getVoices().filter(myLanguages);
+            // Save speech module names
+            voiceNames = speakersArray.map(voice => voice.name);
+            // Fill up voice select element
+            for (let [ix, val] of voiceNames.entries()) {
+                const option = document.createElement("option");
+                option.textContent = val;
+                option.value = ix;
+                speakerSelect.appendChild(option);
+            }
+        }
+
+        // Voices are not autoloaded in Chromium-based browsers [1] perhaps due to autoplay policies [2]
+        loadSpeakers();
+        if ("onvoiceschanged" in synthesis) {
+            synthesis.onvoiceschanged = loadSpeakers;
+        }
+
+        // Select topmost voice by default
+        speakerSelect.value = 0;
+
+        // Speak function for the "Speak" button
+        function speakText() {
+            if (inputField.value == "") {
+                return console.log("The text field is empty.")
+            }
+            const sayThis = new SpeechSynthesisUtterance(inputField.value);
+            sayThis.voice = speakersArray[speakerSelect.value];
+            synthesis.speak(sayThis);
+        }
+
+        // Click to stop speech
+        function stopSpeech() {
+            synthesis.cancel();
+        }
+
+        // Delete text in the text field on click
+        function deleteText() {
+            inputField.value = ""
+        }
+
+    </script>
+</body>
+<!-- 
+    References:
+    [1] https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance 
+    [2] https://stackoverflow.com/a/63867769
+-->
+</html>
