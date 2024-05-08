@@ -20,7 +20,7 @@ Note that depending on your system and browser of choice, different text-to-spee
 
 ## References
 
-This project was inspired or based on the following sources:
+This project was inspired by or based on the following sources:
 
 `https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance`
 - Code snippets for the TTS implementation
