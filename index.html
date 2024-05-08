@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Read this to me</title>
+    <title>Read this to me</title>
 </head>
 <style>
     :root {
         --dark: #1f1f1f;
         --light: #dadada;
     }
+
     body {
         background-color: var(--dark)
     }
+
     .content {
         max-width: 500px;
         flex: auto;
@@ -21,6 +24,7 @@
         color: var(--light);
         padding: 5px 10px 5px 10px;
     }
+
     .custom-button {
         border: none;
         border-radius: 10px;
@@ -29,6 +33,7 @@
         cursor: pointer;
         margin: 10px 6px 10px 0px;
     }
+
     .text-field {
         max-width: 500px;
         width: 500px;
@@ -36,6 +41,7 @@
         border-radius: 10px;
         padding: 10px;
     }
+
     .language-select {
         width: 524px;
         height: 130px;
@@ -43,23 +49,29 @@
         background-color: var(--dark);
         border-radius: 10px;
     }
+
     #button-main {
         color: var(--light);
         background-color: #2654d3;
     }
+
     #button-main:hover {
         background-color: #1e43a8;
     }
+
     #button-main:active {
         background-color: #152e72;
     }
+
     #button-misc {
         color: var(--dark);
         background-color: var(--light);
     }
+
     #button-misc:hover {
         background-color: #adadad;
     }
+
     #button-misc:active {
         background-color: #7e7e7e;
     }
@@ -73,8 +85,8 @@
         <p>Put any text into the field below, choose a voice, and press "Speak".</p>
         <div class="buttons-container">
             <button type="button" class="custom-button" id="button-main" onclick="speakText()">Speak</button>
-            <button type="button" class="custom-button" id="button-misc" onclick="stopSpeech()">Stop</button> 
-            <button type="button" class="custom-button" id="button-misc" onclick="deleteText()">Delete</button> 
+            <button type="button" class="custom-button" id="button-misc" onclick="stopSpeech()">Stop</button>
+            <button type="button" class="custom-button" id="button-misc" onclick="deleteText()">Delete</button>
         </div>
         <div>
             <textarea class="text-field" rows="16" placeholder="Paste text here!"></textarea>
@@ -123,7 +135,7 @@
         // Speak function for the "Speak" button
         function speakText() {
             if (inputField.value == "") {
-                return console.log("The text field is empty.")
+                return console.log("The text field is empty.");
             }
             const sayThis = new SpeechSynthesisUtterance(inputField.value);
             sayThis.voice = speakersArray[speakerSelect.value];
@@ -137,7 +149,7 @@
 
         // Delete text in the text field on click
         function deleteText() {
-            inputField.value = ""
+            inputField.value = "";
         }
     </script>
 </body>
@@ -146,4 +158,5 @@
     [1] https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance 
     [2] https://stackoverflow.com/a/63867769
 -->
+
 </html>
