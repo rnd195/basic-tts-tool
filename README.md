@@ -6,13 +6,15 @@ The goal of this project was to create a basic HTML text-to-speech tool. It uses
 - Keep it *simple* yet aesthetically pleasing
 - Offline if possible
 
+![screenshot](./files/screenshot.jpg)
+
 Currently, only Czech and English text-to-speech modules are displayed. This can be changed in the JavaScript portion of the HTML file by searching for `cs-CZ` or `en-US` (in the `myLanguages()` function) and changing these to other languages.
 
-## How to
+## How To
 
 1. Download `index.html`
-2. (Optional: Change the default languages)
-3. Open it in your browser
+2. (Optional: Change the default languages – see above)
+3. Open `index.html` in your browser
 
 Note that depending on your system and browser of choice, different text-to-speech modules may be loaded. Some of these modules may require an internet connection.
 
