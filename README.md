@@ -12,7 +12,7 @@ Currently, only Czech and English text-to-speech modules are displayed. This can
 
 ## How To
 
-1. Download `index.html`
+1. Download or copy the contents of `index.html`
 2. (Optional: Change the default languages – see above)
 3. Open `index.html` in your browser
 
@@ -22,18 +22,16 @@ Note that depending on your system and browser of choice, different text-to-spee
 
 This project was inspired or based on the following sources:
 
+```
 https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
-
 - Code snippets for the TTS implementation
 
 https://stackoverflow.com/a/63867769
-
 - Note about autoplay policies
 
 https://github.com/zolomohan/text-to-speech
-
 - Original inspiration for the project
 
 https://www.assemblyai.com/blog/javascript-text-to-speech-easy-way/
-
 - Another inspiration for the project
+```
