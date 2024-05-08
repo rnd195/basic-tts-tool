@@ -22,16 +22,15 @@ Note that depending on your system and browser of choice, different text-to-spee
 
 This project was inspired or based on the following sources:
 
-```
-https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
+`https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance`
 - Code snippets for the TTS implementation
 
-https://stackoverflow.com/a/63867769
+`https://stackoverflow.com/a/63867769`
 - Note about autoplay policies
 
-https://github.com/zolomohan/text-to-speech
+`https://github.com/zolomohan/text-to-speech`
 - Original inspiration for the project
 
-https://www.assemblyai.com/blog/javascript-text-to-speech-easy-way/
+`https://www.assemblyai.com/blog/javascript-text-to-speech-easy-way/`
 - Another inspiration for the project
-```
+
